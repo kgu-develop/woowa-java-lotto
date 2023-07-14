@@ -41,8 +41,12 @@ public class LottoGenerator {
   }
   
   private static void validateMoneyIsMultiplesOfPrice(int money) {
-    if (money / 1000 < 0 || money % 1000 > 0) {
+    if (isNotMultiplesOfPrice(money)) {
       throw new IllegalArgumentException("구입금액은 1000의 배수여야 합니다.");
     }
+  }
+  
+  private static boolean isNotMultiplesOfPrice(int money) {
+    return (money / 1000) < 0 || (money % 1000) > 0;
   }
 }
