@@ -1,6 +1,5 @@
 package lotto.utils.validator;
 
-import static lotto.utils.ExceptionConstants.InputException.INPUT_MUST_BE_NUMERIC;
 import static lotto.utils.ExceptionConstants.InputException.PURCHASE_AMOUNT_MUST_BE_THOUSAND_UNIT;
 
 public class LottoPurchaseAmountValidator extends Validator {
@@ -11,14 +10,6 @@ public class LottoPurchaseAmountValidator extends Validator {
         validateInputHasSpace(userInput);
         validateInputIsNumeric(userInput);
         validateUnitOfAmountIsThousand(userInput);
-    }
-
-    private void validateInputIsNumeric(String userInput) {
-        try {
-            Integer.parseInt(userInput);
-        } catch (NumberFormatException exception) {
-            throw new IllegalArgumentException(INPUT_MUST_BE_NUMERIC.message);
-        }
     }
 
     private void validateUnitOfAmountIsThousand(String userInput) {
