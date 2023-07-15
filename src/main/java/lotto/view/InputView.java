@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class InputView {
+    private static final int PURCHASE_UNIT = 1000;
     private static final String COMMA = ",";
     private static final LottoPurchaseAmountValidator LOTTO_PURCHASE_AMOUNT_VALIDATOR
             = new LottoPurchaseAmountValidator();
@@ -18,13 +19,13 @@ public class InputView {
     private static final BonusNumberValidator BONUS_NUMBER_VALIDATOR
             = new BonusNumberValidator();
 
-    public static int readLottoPurchaseAmount() {
+    public static int readLottoPurchaseCount() {
         System.out.println("구입금액을 입력해 주세요.");
 
         final String userInput = Console.readLine();
         LOTTO_PURCHASE_AMOUNT_VALIDATOR.validate(userInput);
 
-        return Integer.parseInt(userInput);
+        return Integer.parseInt(userInput) / PURCHASE_UNIT;
     }
 
     public static List<Integer> readWiningNumbers() {
