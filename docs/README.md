@@ -58,6 +58,13 @@
 
 - 로또 번호 자동 생성기
 
+### `Validator`
+
+- 사용자 Input에 대한 기본 검증 컴포넌트
+  - `LottoPurchaseAmountValidator` -> 로또 구입금액 검증 컴포넌트
+  - `WinningNumberValidator` -> 로또 당첨번호 검증 컴포넌트
+  - `BonusNumberValidator` -> 보너스 번호 검증 컴포넌트
+
 <br>
 <hr>
 
