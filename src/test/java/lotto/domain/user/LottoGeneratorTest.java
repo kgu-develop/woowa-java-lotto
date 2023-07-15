@@ -24,26 +24,4 @@ class LottoGeneratorTest {
     // then
     assertThat(lottos.size()).isEqualTo(quantity);
   }
-  
-  @Test
-  @DisplayName("구입금액으로 음수를 입력하면 예외가 발생한다.")
-  void inputNegativeMoney() {
-    // given
-    int money = -1000;
-      
-    // then
-    assertThatThrownBy(() -> generateLottos(money))
-      .isInstanceOf(IllegalArgumentException.class);
-  }
-  
-  @Test
-  @DisplayName("구입금액으로 음수를 입력하면 예외가 발생한다.")
-  void inputNotMultipleMoney() {
-    // given
-    int money = 1100;
-    
-    // then
-    assertThatThrownBy(() -> generateLottos(money))
-      .isInstanceOf(IllegalArgumentException.class);
-  }
 }

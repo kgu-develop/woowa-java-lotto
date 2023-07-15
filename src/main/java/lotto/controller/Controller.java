@@ -1,23 +1,19 @@
 package lotto.controller;
 
-import lotto.domain.Lotto.LottoGenerator;
 import lotto.domain.user.User;
 
-import static camp.nextstep.edu.missionutils.Console.readLine;
+import static lotto.domain.Lotto.LottoGenerator.generateLottos;
+import static lotto.domain.Lotto.MoneyGenerator.generateMoney;
 
 public class Controller {
   private User user;
   
+  public void run() {
+    System.out.println("구입금액을 입력해 주세요.");
+    buyLotto();
+  }
+  
   private void buyLotto() {
-    user = new User(LottoGenerator.generateLottos(inputMoney()));
-  }
-  
-  private int inputMoney() {
-    String inputMoney = readLine();
-    return convertMoneyTypeStringToInt(inputMoney);
-  }
-  
-  private int convertMoneyTypeStringToInt(String inputMoney) {
-    return Integer.parseInt(inputMoney);
+    user = new User(generateLottos(generateMoney()));
   }
 }
