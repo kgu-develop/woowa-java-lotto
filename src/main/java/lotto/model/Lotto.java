@@ -3,6 +3,7 @@ package lotto.model;
 import java.util.Collections;
 import java.util.List;
 
+import static java.util.Collections.sort;
 import static lotto.utils.ExceptionConstants.LottoException.*;
 import static lotto.utils.LottoConstants.*;
 
@@ -13,6 +14,7 @@ public class Lotto {
         validateEachLottoElementIsInRange(numbers);
         validateTotalLottoSize(numbers);
         validateLottoHasDuplicateElement(numbers);
+        sort(numbers);
         this.numbers = numbers;
     }
 

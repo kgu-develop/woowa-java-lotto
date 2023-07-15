@@ -6,12 +6,14 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
 import static lotto.utils.ExceptionConstants.LottoException.*;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 class LottoTest {
     @ParameterizedTest
@@ -72,6 +74,14 @@ class LottoTest {
     @Test
     @DisplayName("Lotto를 생성한다")
     void construct() {
-        assertDoesNotThrow(() -> new Lotto(List.of(1, 2, 3, 4, 5, 6)));
+        // when
+        final Lotto lottoA = new Lotto(Arrays.asList(1, 3, 2, 4, 5, 6));
+        final Lotto lottoB = new Lotto(Arrays.asList(44, 1, 10, 23, 18, 6));
+
+        // then
+        assertAll(
+                () -> assertThat(lottoA.getNumbers()).containsExactly(1, 2, 3, 4, 5, 6),
+                () -> assertThat(lottoB.getNumbers()).containsExactly(1, 6, 10, 18, 23, 44)
+        );
     }
 }
