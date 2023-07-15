@@ -9,7 +9,7 @@ public enum WinningRank {
     THIRD(5, List.of(false), 1_500_000, "5개 일치"),
     FOURTH(4, List.of(true, false), 50_000, "4개 일치"),
     FIFTH(3, List.of(true, false), 5_000, "3개 일치"),
-    NONE(1, List.of(), 0, "NONE..."),
+    NONE(0, List.of(), 0, "NONE..."),
     ;
 
     private final int matchCount;
