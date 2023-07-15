@@ -73,6 +73,10 @@ public class LottoStatistics {
         return Collections.unmodifiableMap(winningResult);
     }
 
+    public int getWinningCountByRank(final WinningRank winningRank) {
+        return winningResult.getOrDefault(winningRank, 0);
+    }
+
     public BigDecimal getEarningRate() {
         final BigDecimal lottoPurchaseAmount = userLottos.getLottoPurchaseAmount();
         final BigDecimal totalWinningAmount = calculateTotalWinningAmount();
