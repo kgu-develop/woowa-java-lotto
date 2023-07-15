@@ -1,6 +1,7 @@
 package lotto.model;
 
 import lotto.utils.LottoRandomGenerator;
+import org.assertj.core.util.VisibleForTesting;
 
 import java.util.Collections;
 import java.util.List;
@@ -12,6 +13,11 @@ public class UserLottos {
 
     private UserLottos(final int lottoPurchaseCount) {
         this.userLottos = createLottoByPurchaseCount(lottoPurchaseCount);
+    }
+
+    @VisibleForTesting
+    public UserLottos(final List<UserLotto> userLottos) {
+        this.userLottos = userLottos;
     }
 
     public static UserLottos issueLottoByPurchaseCount(final int lottoPurchaseCount) {
