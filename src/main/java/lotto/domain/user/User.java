@@ -1,5 +1,7 @@
 package lotto.domain.user;
 
+import lotto.domain.Lotto.Lotto;
+
 import java.util.List;
 
 public class User {

@@ -1,11 +1,12 @@
 package lotto.domain.user;
 
+import lotto.domain.Lotto.Lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static lotto.domain.user.LottoGenerator.generateLottos;
+import static lotto.domain.Lotto.LottoGenerator.generateLottos;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 

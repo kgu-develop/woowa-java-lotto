@@ -1,6 +1,6 @@
 package lotto.controller;
 
-import lotto.domain.user.LottoGenerator;
+import lotto.domain.Lotto.LottoGenerator;
 import lotto.domain.user.User;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
