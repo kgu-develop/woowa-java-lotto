@@ -33,4 +33,8 @@ public class UserLottos {
     public List<UserLotto> getUserLottos() {
         return Collections.unmodifiableList(userLottos);
     }
+
+    public int getLottoPurchseCount() {
+        return userLottos.size();
+    }
 }

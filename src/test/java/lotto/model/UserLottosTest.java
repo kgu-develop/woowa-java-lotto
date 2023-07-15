@@ -15,6 +15,6 @@ class UserLottosTest {
         final UserLottos userLottos = UserLottos.issueLottoByPurchaseCount(lottoPurchaseCount);
 
         // then
-        assertThat(userLottos.getUserLottos()).hasSize(lottoPurchaseCount);
+        assertThat(userLottos.getLottoPurchseCount()).isEqualTo(lottoPurchaseCount);
     }
 }
