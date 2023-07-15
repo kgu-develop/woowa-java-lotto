@@ -40,10 +40,6 @@ public enum WinningRank {
                 .orElse(NONE);
     }
 
-    public int getMatchCount() {
-        return matchCount;
-    }
-
     public int getReward() {
         return reward;
     }

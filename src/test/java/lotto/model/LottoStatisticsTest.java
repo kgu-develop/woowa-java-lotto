@@ -17,12 +17,12 @@ class LottoStatisticsTest {
     void getWinningResult() {
         // given
         final LottoWinningMachine lottoWinningMachine = createLottoWinningMachine();
-        final UserLottos userLottosCaseA = createUserLottosCaseA();
-        final UserLottos userLottosCaseB = createUserLottosCaseB();
+        final UserLotto userLottoCaseA = createUserLottosCaseA();
+        final UserLotto userLottoCaseB = createUserLottosCaseB();
 
         // when
-        final LottoStatistics caseA = LottoStatistics.of(lottoWinningMachine, userLottosCaseA);
-        final LottoStatistics caseB = LottoStatistics.of(lottoWinningMachine, userLottosCaseB);
+        final LottoStatistics caseA = LottoStatistics.of(lottoWinningMachine, userLottoCaseA);
+        final LottoStatistics caseB = LottoStatistics.of(lottoWinningMachine, userLottoCaseB);
 
         // then
         final Map<WinningRank, Integer> winningResultA = caseA.getWinningResult();
@@ -51,12 +51,12 @@ class LottoStatisticsTest {
     void getEarningRate() {
         // given
         final LottoWinningMachine lottoWinningMachine = createLottoWinningMachine();
-        final UserLottos userLottosCaseA = createUserLottosCaseA();
-        final UserLottos userLottosCaseB = createUserLottosCaseB();
+        final UserLotto userLottoCaseA = createUserLottosCaseA();
+        final UserLotto userLottoCaseB = createUserLottosCaseB();
 
         // when
-        final LottoStatistics caseA = LottoStatistics.of(lottoWinningMachine, userLottosCaseA);
-        final LottoStatistics caseB = LottoStatistics.of(lottoWinningMachine, userLottosCaseB);
+        final LottoStatistics caseA = LottoStatistics.of(lottoWinningMachine, userLottoCaseA);
+        final LottoStatistics caseB = LottoStatistics.of(lottoWinningMachine, userLottoCaseB);
 
         // then
         assertAll(
@@ -72,20 +72,20 @@ class LottoStatisticsTest {
         );
     }
 
-    private UserLottos createUserLottosCaseA() {
-        return new UserLottos(
+    private UserLotto createUserLottosCaseA() {
+        return new UserLotto(
                 List.of(
-                        UserLotto.createLotto(Arrays.asList(8, 21, 23, 41, 42, 43)), // None
-                        UserLotto.createLotto(Arrays.asList(3, 5, 11, 16, 32, 38)), // None
-                        UserLotto.createLotto(Arrays.asList(7, 11, 16, 35, 36, 44)), // None
-                        UserLotto.createLotto(Arrays.asList(13, 14, 16, 38, 42, 45)), // None
-                        UserLotto.createLotto(Arrays.asList(12, 14, 16, 38, 42, 45)), // None
-                        UserLotto.createLotto(Arrays.asList(1, 9, 11, 22, 41, 42)), // 5등
-                        UserLotto.createLotto(Arrays.asList(7, 10, 22, 37, 42, 43)), // 5등
-                        UserLotto.createLotto(Arrays.asList(1, 10, 22, 37, 38, 45)), // 4등
-                        UserLotto.createLotto(Arrays.asList(1, 9, 10, 12, 37, 39)), // 3등
-                        UserLotto.createLotto(Arrays.asList(1, 9, 10, 12, 37, 40)), // 2등
-                        UserLotto.createLotto(Arrays.asList(1, 9, 10, 12, 22, 37)) // 1등
+                        new Lotto(Arrays.asList(8, 21, 23, 41, 42, 43)), // None
+                        new Lotto(Arrays.asList(3, 5, 11, 16, 32, 38)), // None
+                        new Lotto(Arrays.asList(7, 11, 16, 35, 36, 44)), // None
+                        new Lotto(Arrays.asList(13, 14, 16, 38, 42, 45)), // None
+                        new Lotto(Arrays.asList(12, 14, 16, 38, 42, 45)), // None
+                        new Lotto(Arrays.asList(1, 9, 11, 22, 41, 42)), // 5등
+                        new Lotto(Arrays.asList(7, 10, 22, 37, 42, 43)), // 5등
+                        new Lotto(Arrays.asList(1, 10, 22, 37, 38, 45)), // 4등
+                        new Lotto(Arrays.asList(1, 9, 10, 12, 37, 39)), // 3등
+                        new Lotto(Arrays.asList(1, 9, 10, 12, 37, 40)), // 2등
+                        new Lotto(Arrays.asList(1, 9, 10, 12, 22, 37)) // 1등
                 )
         );
 
@@ -96,26 +96,26 @@ class LottoStatisticsTest {
          */
     }
 
-    private UserLottos createUserLottosCaseB() {
-        return new UserLottos(
+    private UserLotto createUserLottosCaseB() {
+        return new UserLotto(
                 List.of(
-                        UserLotto.createLotto(Arrays.asList(8, 21, 23, 41, 42, 43)), // None
-                        UserLotto.createLotto(Arrays.asList(3, 5, 11, 16, 32, 38)), // None
-                        UserLotto.createLotto(Arrays.asList(7, 11, 16, 35, 36, 44)), // None
-                        UserLotto.createLotto(Arrays.asList(13, 14, 16, 38, 42, 45)), // None
-                        UserLotto.createLotto(Arrays.asList(12, 14, 16, 38, 42, 45)), // None
-                        UserLotto.createLotto(Arrays.asList(8, 21, 23, 41, 42, 43)), // None
-                        UserLotto.createLotto(Arrays.asList(3, 5, 11, 16, 32, 38)), // None
-                        UserLotto.createLotto(Arrays.asList(7, 11, 16, 35, 36, 44)), // None
-                        UserLotto.createLotto(Arrays.asList(13, 14, 16, 38, 42, 45)), // None
-                        UserLotto.createLotto(Arrays.asList(12, 14, 16, 38, 42, 45)), // None
-                        UserLotto.createLotto(Arrays.asList(13, 14, 16, 38, 42, 45)), // None
-                        UserLotto.createLotto(Arrays.asList(12, 14, 16, 38, 42, 45)), // None
-                        UserLotto.createLotto(Arrays.asList(12, 14, 16, 38, 42, 45)), // None
-                        UserLotto.createLotto(Arrays.asList(12, 14, 16, 38, 42, 45)), // None
-                        UserLotto.createLotto(Arrays.asList(1, 9, 11, 22, 41, 42)), // 5등
-                        UserLotto.createLotto(Arrays.asList(1, 9, 11, 22, 41, 42)), // 5등
-                        UserLotto.createLotto(Arrays.asList(1, 9, 11, 22, 41, 42)) // 5등
+                        new Lotto(Arrays.asList(8, 21, 23, 41, 42, 43)), // None
+                        new Lotto(Arrays.asList(3, 5, 11, 16, 32, 38)), // None
+                        new Lotto(Arrays.asList(7, 11, 16, 35, 36, 44)), // None
+                        new Lotto(Arrays.asList(13, 14, 16, 38, 42, 45)), // None
+                        new Lotto(Arrays.asList(12, 14, 16, 38, 42, 45)), // None
+                        new Lotto(Arrays.asList(8, 21, 23, 41, 42, 43)), // None
+                        new Lotto(Arrays.asList(3, 5, 11, 16, 32, 38)), // None
+                        new Lotto(Arrays.asList(7, 11, 16, 35, 36, 44)), // None
+                        new Lotto(Arrays.asList(13, 14, 16, 38, 42, 45)), // None
+                        new Lotto(Arrays.asList(12, 14, 16, 38, 42, 45)), // None
+                        new Lotto(Arrays.asList(13, 14, 16, 38, 42, 45)), // None
+                        new Lotto(Arrays.asList(12, 14, 16, 38, 42, 45)), // None
+                        new Lotto(Arrays.asList(12, 14, 16, 38, 42, 45)), // None
+                        new Lotto(Arrays.asList(12, 14, 16, 38, 42, 45)), // None
+                        new Lotto(Arrays.asList(1, 9, 11, 22, 41, 42)), // 5등
+                        new Lotto(Arrays.asList(1, 9, 11, 22, 41, 42)), // 5등
+                        new Lotto(Arrays.asList(1, 9, 11, 22, 41, 42)) // 5등
                 )
         );
 

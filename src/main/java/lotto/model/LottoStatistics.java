@@ -9,24 +9,24 @@ import java.util.Map;
 
 public class LottoStatistics {
     private final LottoWinningMachine lottoWinningMachine;
-    private final UserLottos userLottos;
+    private final UserLotto userLotto;
     private final Map<WinningRank, Integer> winningResult = new EnumMap<>(WinningRank.class);
 
     private LottoStatistics(
             final LottoWinningMachine lottoWinningMachine,
-            final UserLottos userLottos
+            final UserLotto userLotto
     ) {
         this.lottoWinningMachine = lottoWinningMachine;
-        this.userLottos = userLottos;
+        this.userLotto = userLotto;
         initWinningResult();
         calculateLotteryWinningResult();
     }
 
     public static LottoStatistics of(
             final LottoWinningMachine lottoWinningMachine,
-            final UserLottos userLottos
+            final UserLotto userLotto
     ) {
-        return new LottoStatistics(lottoWinningMachine, userLottos);
+        return new LottoStatistics(lottoWinningMachine, userLotto);
     }
 
     private void initWinningResult() {
@@ -39,8 +39,8 @@ public class LottoStatistics {
         List<Integer> winningLotteryNumbers = lottoWinningMachine.getWinningLotteryNumbers();
         int bonusNumber = lottoWinningMachine.getBonusNumber();
 
-        for (UserLotto userLotto : userLottos.getUserLottos()) {
-            List<Integer> lottoNumbers = userLotto.getLottoNumbers();
+        for (Lotto lotto : userLotto.getUserLottos()) {
+            List<Integer> lottoNumbers = lotto.getNumbers();
             int matchCount = getLottoMatchCount(lottoNumbers, winningLotteryNumbers);
             boolean hasBonus = isBonusNumberExists(lottoNumbers, bonusNumber);
 
@@ -78,7 +78,7 @@ public class LottoStatistics {
     }
 
     public BigDecimal getEarningRate() {
-        final BigDecimal lottoPurchaseAmount = userLottos.getLottoPurchaseAmount();
+        final BigDecimal lottoPurchaseAmount = userLotto.getLottoPurchaseAmount();
         final BigDecimal totalWinningAmount = calculateTotalWinningAmount();
 
         return totalWinningAmount

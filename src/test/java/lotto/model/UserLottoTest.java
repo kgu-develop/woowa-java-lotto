@@ -1,35 +1,36 @@
 package lotto.model;
 
-import lotto.utils.LottoRandomGenerator;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
-import java.util.Arrays;
-import java.util.List;
+import java.math.BigDecimal;
+import java.util.stream.Stream;
 
-import static lotto.utils.LottoConstants.LOTTO_SIZE;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
 class UserLottoTest {
-    @Test
-    @DisplayName("UserLotto를 생성한다")
-    void construct() {
+    @ParameterizedTest
+    @MethodSource("issueCase")
+    @DisplayName("구매한 개수만큼 UseLotto를 발급받는다")
+    void issueLottoByPurchaseCount(int lottoPurchaseCount, BigDecimal purchaseAmount) {
         // when
-        final List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6);
-        final UserLotto userLotto = UserLotto.createLotto(numbers);
-        final UserLotto userLottoByAuto = UserLotto.createLotto(LottoRandomGenerator.generate());
+        final UserLotto userLotto = UserLotto.issueLottoByPurchaseCount(lottoPurchaseCount);
 
         // then
         assertAll(
-                () -> assertThat(userLotto.getLottoNumbers()).containsExactlyElementsOf(numbers), // 수동 생성
-                () -> assertThat(userLottoByAuto.getLottoNumbers()).hasSize(LOTTO_SIZE), // 자동 생성 - size validation
-                () -> assertThat(
-                        userLottoByAuto.getLottoNumbers()
-                                .stream()
-                                .distinct()
-                                .count()
-                ).isEqualTo(LOTTO_SIZE) // 자동 생성 - has duplicate validation
+                () -> assertThat(userLotto.getLottoPurchseCount()).isEqualTo(lottoPurchaseCount),
+                () -> assertThat(userLotto.getLottoPurchaseAmount()).isEqualTo(purchaseAmount)
+        );
+    }
+
+    private static Stream<Arguments> issueCase() {
+        return Stream.of(
+                Arguments.of(5, BigDecimal.valueOf(5_000)),
+                Arguments.of(10, BigDecimal.valueOf(10_000)),
+                Arguments.of(1_000_000, BigDecimal.valueOf(1_000_000_000))
         );
     }
 }

@@ -2,14 +2,14 @@ package lotto.controller;
 
 import lotto.model.LottoStatistics;
 import lotto.model.LottoWinningMachine;
-import lotto.model.UserLottos;
+import lotto.model.UserLotto;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
 import java.util.List;
 
 public class GameController {
-    private static UserLottos userLottos;
+    private static UserLotto userLotto;
     private static LottoWinningMachine lottoWinningMachine;
 
     public void run() {
@@ -24,8 +24,8 @@ public class GameController {
 
     private void buyLotto() {
         final int lottoPurchaseCount = InputView.readLottoPurchaseCount();
-        userLottos = UserLottos.issueLottoByPurchaseCount(lottoPurchaseCount);
-        OutputView.printPurchaseInformation(userLottos.getUserLottos());
+        userLotto = UserLotto.issueLottoByPurchaseCount(lottoPurchaseCount);
+        OutputView.printPurchaseInformation(userLotto.getUserLottos());
     }
 
     private void initLottoWinningMachine() {
@@ -35,7 +35,7 @@ public class GameController {
     }
 
     private void displayLottoResult() {
-        final LottoStatistics lottoStatistics = LottoStatistics.of(lottoWinningMachine, userLottos);
+        final LottoStatistics lottoStatistics = LottoStatistics.of(lottoWinningMachine, userLotto);
         OutputView.printWinningStatistics(lottoStatistics);
     }
 }

@@ -1,7 +1,7 @@
 package lotto.view;
 
+import lotto.model.Lotto;
 import lotto.model.LottoStatistics;
-import lotto.model.UserLotto;
 import lotto.model.WinningRank;
 
 import java.text.DecimalFormat;
@@ -17,7 +17,7 @@ public class OutputView {
     private static final String REWARD_FORMAT = "#,###";
     private static final String EARNING_FORMAT = "총 수익률은 %s%%입니다.";
 
-    public static void printPurchaseInformation(final List<UserLotto> userLottos) {
+    public static void printPurchaseInformation(final List<Lotto> userLottos) {
         System.out.printf("%d개를 구매했습니다." + ENTER, userLottos.size());
         userLottos.forEach(System.out::println);
     }
