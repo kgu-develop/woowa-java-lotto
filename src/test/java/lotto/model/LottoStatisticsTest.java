@@ -3,6 +3,7 @@ package lotto.model;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -45,6 +46,25 @@ class LottoStatisticsTest {
         );
     }
 
+    @Test
+    @DisplayName("구매한 로또 N장에 대한 수익률을 조회한다")
+    void getEarningRate() {
+        // given
+        final LottoWinningMachine lottoWinningMachine = createLottoWinningMachine();
+        final UserLottos userLottosCaseA = createUserLottosCaseA();
+        final UserLottos userLottosCaseB = createUserLottosCaseB();
+
+        // when
+        final LottoStatistics caseA = LottoStatistics.of(lottoWinningMachine, userLottosCaseA);
+        final LottoStatistics caseB = LottoStatistics.of(lottoWinningMachine, userLottosCaseB);
+
+        // then
+        assertAll(
+                () -> assertThat(caseA.getEarningRate()).isEqualTo(BigDecimal.valueOf(18468727.3)),
+                () -> assertThat(caseB.getEarningRate()).isEqualTo(BigDecimal.valueOf(88.2))
+        );
+    }
+
     private LottoWinningMachine createLottoWinningMachine() {
         return LottoWinningMachine.drawWinningLottery(
                 Arrays.asList(1, 9, 10, 12, 22, 37),
@@ -70,9 +90,9 @@ class LottoStatisticsTest {
         );
 
         /**
-         * 구매 금액 = 10_000
+         * 구매 금액 = 11_000
          * 당첨 금액 = 2_031_560_000
-         * -> 수익률 = 203156%
+         * -> 수익률 = 184,687.27272727272727272727272727... = 18468727.27% = 18468727.3%
          */
     }
 
@@ -94,15 +114,15 @@ class LottoStatisticsTest {
                         UserLotto.createLotto(Arrays.asList(12, 14, 16, 38, 42, 45)), // None
                         UserLotto.createLotto(Arrays.asList(12, 14, 16, 38, 42, 45)), // None
                         UserLotto.createLotto(Arrays.asList(1, 9, 11, 22, 41, 42)), // 5등
-                        UserLotto.createLotto(Arrays.asList(7, 10, 22, 37, 42, 43)), // 5등
-                        UserLotto.createLotto(Arrays.asList(1, 10, 22, 35, 38, 45)) // 5등
+                        UserLotto.createLotto(Arrays.asList(1, 9, 11, 22, 41, 42)), // 5등
+                        UserLotto.createLotto(Arrays.asList(1, 9, 11, 22, 41, 42)) // 5등
                 )
         );
 
         /**
          * 구매 금액 = 17000
          * 당첨 금액 = 15000
-         * -> 수익률 = 88.2%
+         * -> 수익률 = 0.88235294117647058823529411764706... = 88.23% = 88.2%
          */
     }
 }

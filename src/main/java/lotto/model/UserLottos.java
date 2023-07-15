@@ -3,6 +3,7 @@ package lotto.model;
 import lotto.utils.LottoRandomGenerator;
 import org.assertj.core.util.VisibleForTesting;
 
+import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -36,5 +37,9 @@ public class UserLottos {
 
     public int getLottoPurchseCount() {
         return userLottos.size();
+    }
+
+    public BigDecimal getLottoPurchaseAmount() {
+        return BigDecimal.valueOf(1000).multiply(BigDecimal.valueOf(getLottoPurchseCount()));
     }
 }

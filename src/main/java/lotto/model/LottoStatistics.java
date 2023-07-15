@@ -1,5 +1,7 @@
 package lotto.model;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Collections;
 import java.util.EnumMap;
 import java.util.List;
@@ -69,5 +71,30 @@ public class LottoStatistics {
 
     public Map<WinningRank, Integer> getWinningResult() {
         return Collections.unmodifiableMap(winningResult);
+    }
+
+    public BigDecimal getEarningRate() {
+        final BigDecimal lottoPurchaseAmount = userLottos.getLottoPurchaseAmount();
+        final BigDecimal totalWinningAmount = calculateTotalWinningAmount();
+
+        return totalWinningAmount
+                .multiply(BigDecimal.valueOf(100)) // 백분율
+                .divide(lottoPurchaseAmount, 1, RoundingMode.HALF_UP);
+    }
+
+    private BigDecimal calculateTotalWinningAmount() {
+        BigDecimal amount = BigDecimal.ZERO;
+        for (WinningRank winningRank : winningResult.keySet()) {
+            final BigDecimal addPrize = getAddPrize(winningRank);
+            amount = amount.add(addPrize);
+        }
+        return amount;
+    }
+
+    private BigDecimal getAddPrize(final WinningRank winningRank) {
+        final int reward = winningRank.getReward();
+        final int count = winningResult.get(winningRank);
+
+        return BigDecimal.valueOf((long) reward * count);
     }
 }

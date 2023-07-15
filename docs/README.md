@@ -7,7 +7,7 @@
 - [X] LottoWinningMachine은 로또 당첨 번호를 생성한다
     - 총 7개의 중복되지 않는 숫자 (기본 당첨 번호 6개 + 보너스 번호 1개)
 
-- [ ] LottoStatistics는 N장의 로또에 대한 당첨 통계를 산출한다
+- [X] LottoStatistics는 N장의 로또에 대한 당첨 통계를 산출한다
 
 <br>
 <hr>
