@@ -16,4 +16,9 @@ public class UserLotto {
     public List<Integer> getLottoNumbers() {
         return lotto.getNumbers();
     }
+
+    @Override
+    public String toString() {
+        return lotto.getNumbers().toString();
+    }
 }
