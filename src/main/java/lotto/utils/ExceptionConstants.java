@@ -24,4 +24,17 @@ public interface ExceptionConstants {
             this.message = message;
         }
     }
+
+    enum InputException {
+        INPUT_MUST_NOT_CONTAINS_SPACE("공백없이 입력해주세요."),
+        INPUT_MUST_BE_NUMERIC("숫자를 입력해주세요."),
+        PURCHASE_AMOUNT_MUST_BE_THOUSAND_UNIT("천원 단위로 구입금액을 입력해주세요.")
+        ;
+
+        public final String message;
+
+        InputException(final String message) {
+            this.message = message;
+        }
+    }
 }
