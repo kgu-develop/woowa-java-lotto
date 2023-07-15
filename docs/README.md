@@ -22,12 +22,8 @@
 
 ### `UserLotto`
 
-- `1000원` 단위의 로또 1장을 구매하는 컴포넌트
-
-### `UserLottos`
-
 - `1000원` 단위의 로또 N장을 구매하는 컴포넌트
-    - `List<UserLotto>`
+    - `List<Lotto>`
 
 ### `LottoWinningMachine`
 
