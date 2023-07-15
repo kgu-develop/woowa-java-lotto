@@ -12,7 +12,7 @@ class UserLottosTest {
     @DisplayName("구매한 개수만큼 UseLotto를 발급받는다")
     void construct(int lottoPurchaseCount) {
         // when
-        UserLottos userLottos = UserLottos.issueLottoByPurchaseCount(lottoPurchaseCount);
+        final UserLottos userLottos = UserLottos.issueLottoByPurchaseCount(lottoPurchaseCount);
 
         // then
         assertThat(userLottos.getUserLottos()).hasSize(lottoPurchaseCount);
