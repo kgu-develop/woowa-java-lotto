@@ -3,8 +3,8 @@ package lotto.utils.validator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static lotto.utils.ExceptionConstants.InputException.INPUT_MUST_BE_NUMERIC;
 import static lotto.utils.ExceptionConstants.InputException.INPUT_MUST_NOT_CONTAINS_SPACE;
+import static lotto.utils.ExceptionConstants.InputException.WINNING_NUMBER_MUST_BE_SPLIT_BY_COMMA;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
@@ -25,7 +25,7 @@ class WinningNumberValidatorTest {
     void throwExceptionByInputIsNotNumeric() {
         assertThatThrownBy(() -> WINNING_NUMBER_VALIDATOR.validate("1,2,3,a,4,5,b,6"))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(INPUT_MUST_BE_NUMERIC.message);
+                .hasMessage(WINNING_NUMBER_MUST_BE_SPLIT_BY_COMMA.message);
     }
 
     @Test
