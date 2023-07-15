@@ -1,5 +1,7 @@
 package lotto.model;
 
+import lotto.utils.LottoRandomGenerator;
+
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -17,7 +19,7 @@ public class UserLottos {
     }
 
     private List<UserLotto> createLottoByPurchaseCount(final int lottoPurchaseCount) {
-        return Stream.generate(UserLotto::createLottoByAutomatic)
+        return Stream.generate(() -> UserLotto.createLotto(LottoRandomGenerator.generate()))
                 .limit(lottoPurchaseCount)
                 .collect(Collectors.toList());
     }

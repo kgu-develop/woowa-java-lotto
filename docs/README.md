@@ -54,6 +54,10 @@
 
 - Lotto 숫자 범위 & 전체 사이즈 관련 상수 전용 컴포넌트
 
+### `LottoRandomGenerator`
+
+- 로또 번호 자동 생성기
+
 <br>
 <hr>
 
