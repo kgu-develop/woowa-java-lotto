@@ -4,7 +4,7 @@ import java.util.List;
 
 public class AnswerLotto {
   private List<Integer> answerNumbers;
-  private Integer bonusNumber;
+  private int bonusNumber;
   
   public AnswerLotto(List<Integer> answerNumbers, Integer bonusNumber) {
     validateLottoSize(answerNumbers);
@@ -42,5 +42,9 @@ public class AnswerLotto {
   
   public List<Integer> getAnswerNumbers() {
     return answerNumbers;
+  }
+  
+  public int getBonusNumber() {
+    return bonusNumber;
   }
 }

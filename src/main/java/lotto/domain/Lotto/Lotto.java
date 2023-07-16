@@ -38,6 +38,10 @@ public class Lotto {
         return numbers.stream().anyMatch(number -> number < 1 || number > 45);
     }
     
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+    
     @Override
     public String toString() {
         return numbers.toString();

@@ -19,7 +19,7 @@ public class Controller {
     System.out.println("구입금액을 입력해 주세요.");
     
     buyLotto();
-    
+  
     List<Lotto> lottos = user.getLottos();
     System.out.println(lottos.size() + "개를 구매했습니다.");
     for (Lotto lotto : lottos) {
@@ -29,7 +29,7 @@ public class Controller {
     System.out.println("당첨 번호를 입력해 주세요.");
     String answerLottoNumbers = readLine();
     System.out.println("보너스 번호를 입력해 주세요.");
-    Integer bonusLottoNumber = Integer.valueOf(readLine());
+    int bonusLottoNumber = Integer.parseInt(readLine());
     List<Integer> answerLotto = Stream.of(answerLottoNumbers.split(","))
       .map(Integer::valueOf).collect(Collectors.toList());
     new AnswerLotto(answerLotto, bonusLottoNumber);
