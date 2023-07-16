@@ -13,21 +13,22 @@ class AnswerLottoTest {
   @DisplayName("당첨 번호 6자리와 보너스 번호 1자리를 입력하면 당첨 로또를 선언할 수 있다.")
   void canCreateAnswerLotto() {
     // given
-    List<Integer> answerNumberList = List.of(1, 2, 3, 4, 5, 6, 7);
-    AnswerLotto answerLotto = new AnswerLotto(answerNumberList);
+    List<Integer> answerNumberList = List.of(1, 2, 3, 4, 5, 6);
+    Integer bonusNumber = 1;
+    AnswerLotto answerLotto = new AnswerLotto(answerNumberList, bonusNumber);
     
     // then
     assertThat(answerLotto.getAnswerNumbers()).isEqualTo(answerNumberList);
   }
   
   @Test
-  @DisplayName("당첨 로또 번호가 7개가 아니면 예외가 발생한다.")
+  @DisplayName("당첨 로또 번호가 6개가 아니면 예외가 발생한다.")
   void throwException_wrongSize() {
     // given
-    List<Integer> answerNumberList = List.of(1, 2, 3, 4, 5, 6);
+    List<Integer> answerNumberList = List.of(1, 2, 3, 4, 5);
     
     // then
-    assertThatThrownBy(() -> new AnswerLotto(answerNumberList))
+    assertThatThrownBy(() -> new AnswerLotto(answerNumberList, 0))
       .isInstanceOf(IllegalArgumentException.class);
   }
   
@@ -38,7 +39,7 @@ class AnswerLottoTest {
     List<Integer> answerNumberList = List.of(1, 2, 5, 4, 5, 6);
     
     // then
-    assertThatThrownBy(() -> new AnswerLotto(answerNumberList))
+    assertThatThrownBy(() -> new AnswerLotto(answerNumberList, 0))
       .isInstanceOf(IllegalArgumentException.class);
   }
   
@@ -49,7 +50,7 @@ class AnswerLottoTest {
     List<Integer> answerNumberList = List.of(1, 2, 5, 4, 5, 6);
     
     // then
-    assertThatThrownBy(() -> new AnswerLotto(answerNumberList))
+    assertThatThrownBy(() -> new AnswerLotto(answerNumberList, 0))
       .isInstanceOf(IllegalArgumentException.class);
   }
 }

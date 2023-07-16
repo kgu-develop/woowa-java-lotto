@@ -4,17 +4,19 @@ import java.util.List;
 
 public class AnswerLotto {
   private List<Integer> answerNumbers;
+  private Integer bonusNumber;
   
-  public AnswerLotto(List<Integer> answerNumbers) {
+  public AnswerLotto(List<Integer> answerNumbers, Integer bonusNumber) {
     validateLottoSize(answerNumbers);
     validateLottoHasDuplicate(answerNumbers);
     validateLottoNumbersRange(answerNumbers);
     this.answerNumbers = answerNumbers;
+    this.bonusNumber = bonusNumber;
   }
   
   private void validateLottoSize(List<Integer> numbers) {
-    if (numbers.size() != 7) {
-      throw new IllegalArgumentException("정답 로또 번호가 7자리가 아닙니다.");
+    if (numbers.size() != 6) {
+      throw new IllegalArgumentException("정답 로또 번호가 6자리가 아닙니다.");
     }
   }
   
@@ -25,7 +27,7 @@ public class AnswerLotto {
   }
   
   private boolean hasDuplicate(List<Integer> numbers) {
-    return numbers.stream().distinct().count() != 7;
+    return numbers.stream().distinct().count() != 6;
   }
   
   private void validateLottoNumbersRange(List<Integer> numbers) {

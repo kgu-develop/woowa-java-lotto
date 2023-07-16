@@ -1,5 +1,6 @@
 package lotto.controller;
 
+import lotto.domain.Lotto.AnswerLotto;
 import lotto.domain.Lotto.Lotto;
 import lotto.domain.user.User;
 
@@ -28,11 +29,10 @@ public class Controller {
     System.out.println("당첨 번호를 입력해 주세요.");
     String answerLottoNumbers = readLine();
     System.out.println("보너스 번호를 입력해 주세요.");
-    String bonusLottoNumbers = readLine();
+    Integer bonusLottoNumber = Integer.valueOf(readLine());
     List<Integer> answerLotto = Stream.of(answerLottoNumbers.split(","))
       .map(Integer::valueOf).collect(Collectors.toList());
-    answerLotto.add(Integer.valueOf(bonusLottoNumbers));
-    System.out.println(answerLotto);
+    new AnswerLotto(answerLotto, bonusLottoNumber);
   }
   
   private void buyLotto() {
