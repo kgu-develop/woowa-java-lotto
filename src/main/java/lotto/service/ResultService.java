@@ -51,4 +51,14 @@ public class ResultService {
     eachLottoNumbers.retainAll(answerNumbers);
     return eachLottoNumbers.size();
   }
+  
+  public int getReturnRate(int money) {
+    return 100 * (
+      statisticCollectCntMap.get("THREE") * 5000 +
+        statisticCollectCntMap.get("FOUR") * 50000 +
+        statisticCollectCntMap.get("FIVE") * 1500000 +
+        statisticCollectCntMap.get("FIVEPLUSBONUS") * 30000000 +
+        statisticCollectCntMap.get("SIX") * 2000000000
+      ) / money;
+  }
 }
