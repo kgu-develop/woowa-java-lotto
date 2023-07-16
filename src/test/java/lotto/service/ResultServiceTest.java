@@ -1,15 +1,16 @@
 package lotto.service;
 
 import lotto.domain.Lotto.Lotto;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 class ResultServiceTest {
   private ResultService resultService;
@@ -177,7 +178,7 @@ class ResultServiceTest {
     // when
     resultService.getStatistics(userLottos, answerNumbers, bonusNumber);
     int money = 1000;
-    int returnRate = resultService.getReturnRate(money);
+    double returnRate = resultService.getReturnRate(money);
   
     // then
     assertThat(returnRate).isEqualTo(100 * 5000 / money);
@@ -196,7 +197,7 @@ class ResultServiceTest {
     // when
     resultService.getStatistics(userLottos, answerNumbers, bonusNumber);
     int money = 1000;
-    int returnRate = resultService.getReturnRate(money);
+    double returnRate = resultService.getReturnRate(money);
 
     // then
     assertThat(returnRate).isEqualTo(100 * 50000 / money);
@@ -215,10 +216,10 @@ class ResultServiceTest {
     // when
     resultService.getStatistics(userLottos, answerNumbers, bonusNumber);
     int money = 1000;
-    int returnRate = resultService.getReturnRate(money);
+    double returnRate = resultService.getReturnRate(money);
 
     // then
-    assertThat(returnRate).isEqualTo(100 * 1500000 / money);
+    assertThat(returnRate).isEqualTo(100d * 1500000 / money);
   }
 
   @Test
@@ -234,10 +235,10 @@ class ResultServiceTest {
     // when
     resultService.getStatistics(userLottos, answerNumbers, bonusNumber);
     int money = 1000;
-    int returnRate = resultService.getReturnRate(money);
+    double returnRate = resultService.getReturnRate(money);
 
     // then
-    assertThat(returnRate).isEqualTo(100 * 30000000 / money);
+    assertThat(returnRate).isEqualTo(100d * 30000000 / money);
   }
 
   @Test
@@ -253,10 +254,10 @@ class ResultServiceTest {
     // when
     resultService.getStatistics(userLottos, answerNumbers, bonusNumber);
     int money = 1000;
-    int returnRate = resultService.getReturnRate(money);
+    double returnRate = resultService.getReturnRate(money);
 
     // then
-    assertThat(returnRate).isEqualTo(100 * 2000000000 / money);
+    assertThat(returnRate).isEqualTo(100d * 2000000000 / money);
   }
   
   @Test
@@ -272,10 +273,10 @@ class ResultServiceTest {
 
     // when
     resultService.getStatistics(userLottos, answerNumbers, bonusNumber);
-    int money = 1000;
-    int returnRate = resultService.getReturnRate(money);
+    int money = 2000;
+    double returnRate = resultService.getReturnRate(money);
 
     // then
-    assertThat(returnRate).isEqualTo(100 * 2000000000 * 2 / money);
+    assertThat(returnRate).isEqualTo((double) 100 * (2 * 2000000000) / money);
   }
 }

@@ -29,11 +29,15 @@ public class ResultService {
       List<Integer> eachLottoNumbers = userLotto.getNumbers();
       bonusCnt = isContainsBonusNumber(eachLottoNumbers, bonusNumber);
       collectCnt = getCollectCnt(eachLottoNumbers, answerNumbers);
-  
-      if (bonusCnt == 1 && collectCnt == 5) { // 보너스가 있을 때 맞는 게 5개면
-        statisticCollectCntMap.compute("FIVEPLUSBONUS", (k, v) -> Integer.valueOf(v + 1));
-      } else { // 그 외
-        statisticCollectCntMap.compute(collectMap.get(collectCnt), (k, v) -> Integer.valueOf(v + 1));
+      
+      try {
+        if (bonusCnt == 1 && collectCnt == 5) {
+          statisticCollectCntMap.compute("FIVEPLUSBONUS", (k, v) -> Integer.valueOf(v + 1));
+        } else {
+          statisticCollectCntMap.compute(collectMap.get(collectCnt), (k, v) -> Integer.valueOf(v + 1));
+        }
+      } catch (NullPointerException e) {
+      
       }
     }
     
@@ -52,8 +56,8 @@ public class ResultService {
     return eachLottoNumbers.size();
   }
   
-  public int getReturnRate(int money) {
-    return 100 * (
+  public double getReturnRate(int money) {
+    return (double) 100 * (
       statisticCollectCntMap.get("THREE") * 5000 +
         statisticCollectCntMap.get("FOUR") * 50000 +
         statisticCollectCntMap.get("FIVE") * 1500000 +
