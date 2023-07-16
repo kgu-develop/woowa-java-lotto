@@ -37,4 +37,9 @@ public class Lotto {
     private boolean isNotInRange(List<Integer> numbers) {
         return numbers.stream().anyMatch(number -> number < 1 || number > 45);
     }
+    
+    @Override
+    public String toString() {
+        return numbers.toString();
+    }
 }
