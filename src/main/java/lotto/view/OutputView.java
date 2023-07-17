@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 public class OutputView {
     private static final String ENTER = "\n";
     private static final String ERROR_MESSAGE_FORMAT = "[ERROR] %s";
-    private static final String WINNNG_FORMAT = "%s (%s원) - %d개";
+    private static final String WINNING_FORMAT = "%s (%s원) - %d개";
     private static final String REWARD_FORMAT = "#,###";
     private static final String EARNING_FORMAT = "총 수익률은 %s%%입니다.";
 
@@ -37,7 +37,7 @@ public class OutputView {
         for (WinningRank winningRank : filteredWinningRank) {
             result.append(
                     String.format(
-                            WINNNG_FORMAT,
+                            WINNING_FORMAT,
                             winningRank.getDescription(),
                             refineReward(winningRank.getReward()),
                             lottoStatistics.getWinningCountByRank(winningRank)
