@@ -35,11 +35,11 @@ public class UserLotto {
         return Collections.unmodifiableList(userLottos);
     }
 
-    public int getLottoPurchseCount() {
+    public int getLottoPurchaseCount() {
         return userLottos.size();
     }
 
     public BigDecimal getLottoPurchaseAmount() {
-        return BigDecimal.valueOf(1000).multiply(BigDecimal.valueOf(getLottoPurchseCount()));
+        return BigDecimal.valueOf(1000).multiply(BigDecimal.valueOf(getLottoPurchaseCount()));
     }
 }

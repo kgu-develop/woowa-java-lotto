@@ -21,7 +21,7 @@ class UserLottoTest {
 
         // then
         assertAll(
-                () -> assertThat(userLotto.getLottoPurchseCount()).isEqualTo(lottoPurchaseCount),
+                () -> assertThat(userLotto.getLottoPurchaseCount()).isEqualTo(lottoPurchaseCount),
                 () -> assertThat(userLotto.getLottoPurchaseAmount()).isEqualTo(purchaseAmount)
         );
     }
