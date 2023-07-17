@@ -53,7 +53,7 @@ public class OutputView {
                 .collect(Collectors.toList());
     }
 
-    private static Object refineReward(final int reward) {
+    private static String refineReward(final int reward) {
         return new DecimalFormat(REWARD_FORMAT).format(reward);
     }
 
