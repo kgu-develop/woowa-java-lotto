@@ -6,7 +6,7 @@ import static lotto.utils.ExceptionConstants.LottoMachineException.BONUS_NUMBER_
 
 public class LottoWinningMachine {
     private final Lotto winningLottery;
-    private final int bonusNumber;
+    private final BonusNumber bonusNumber;
 
     private LottoWinningMachine(
             final List<Integer> winningNumbers,
@@ -14,7 +14,7 @@ public class LottoWinningMachine {
     ) {
         validateBonusNumberIsDuplicate(winningNumbers, bonusNumber);
         this.winningLottery = new Lotto(winningNumbers);
-        this.bonusNumber = bonusNumber;
+        this.bonusNumber = new BonusNumber(bonusNumber);
     }
 
     public static LottoWinningMachine drawWinningLottery(
@@ -38,6 +38,6 @@ public class LottoWinningMachine {
     }
 
     public int getBonusNumber() {
-        return bonusNumber;
+        return bonusNumber.getValue();
     }
 }

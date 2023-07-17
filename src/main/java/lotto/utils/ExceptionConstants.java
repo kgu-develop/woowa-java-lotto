@@ -15,6 +15,7 @@ public interface ExceptionConstants {
     }
 
     enum LottoMachineException {
+        BONUS_NUMBER_IS_NOT_IN_RANGE("보너스 번호는 1부터 45 사이의 숫자여야 합니다."),
         BONUS_NUMBER_MUST_BE_UNIQUE("보너스 번호는 당첨 번호와 중복되지 않아야 합니다."),
         ;
 
