@@ -12,7 +12,8 @@ public class WinningNumberValidator extends Validator {
     @Override
     public void validate(final String userInput) {
         validateInputHasSpace(userInput);
-        inputSplitByComma(userInput).forEach(this::validateInputElementIsNumeric);
+        inputSplitByComma(userInput)
+                .forEach(this::validateInputElementIsNumeric);
     }
 
     private List<String> inputSplitByComma(final String userInput) {
@@ -20,7 +21,7 @@ public class WinningNumberValidator extends Validator {
                 .collect(Collectors.toList());
     }
 
-    void validateInputElementIsNumeric(String userInput) {
+    private void validateInputElementIsNumeric(final String userInput) {
         try {
             Integer.parseInt(userInput);
         } catch (NumberFormatException exception) {

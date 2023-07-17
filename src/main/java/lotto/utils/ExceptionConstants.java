@@ -28,6 +28,7 @@ public interface ExceptionConstants {
     enum InputException {
         INPUT_MUST_NOT_CONTAINS_SPACE("공백없이 입력해주세요."),
         INPUT_MUST_BE_NUMERIC("숫자를 입력해주세요."),
+        PURCHASE_AMOUNT_MUST_BE_POSITIVE("구입 금액은 음수가 될 수 없습니다."),
         PURCHASE_AMOUNT_MUST_BE_THOUSAND_UNIT("천원 단위로 구입금액을 입력해주세요."),
         WINNING_NUMBER_MUST_BE_SPLIT_BY_COMMA("당첨번호는 콤마(,)로 구분해서 공백없이 입력해주세요."),
         ;

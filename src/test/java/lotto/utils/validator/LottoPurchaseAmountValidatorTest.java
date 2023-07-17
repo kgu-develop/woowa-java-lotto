@@ -28,6 +28,14 @@ class LottoPurchaseAmountValidatorTest {
     }
 
     @Test
+    @DisplayName("로또 구입금액이 음수면 예외가 발생한다")
+    void throwExceptionByPurchaseAmountIsNegative() {
+        assertThatThrownBy(() -> LOTTO_PURCHASE_AMOUNT_VALIDATOR.validate("-8000"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(PURCHASE_AMOUNT_MUST_BE_POSITIVE.message);
+    }
+
+    @Test
     @DisplayName("로또 구입금액이 1000원 단위가 아니면 예외가 발생한다")
     void throwExceptionByUnitOfAmountIsNotThousand() {
         assertThatThrownBy(() -> LOTTO_PURCHASE_AMOUNT_VALIDATOR.validate("800"))
