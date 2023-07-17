@@ -46,15 +46,15 @@ public class OutputView {
         }
     }
 
-    private static Object refineReward(final int reward) {
-        return new DecimalFormat(REWARD_FORMAT).format(reward);
-    }
-
     private static List<WinningRank> getFilteredWinningRank() {
         return Arrays.stream(WinningRank.values())
                 .filter(winningRank -> winningRank != WinningRank.NONE)
                 .sorted(Collections.reverseOrder()) // Enum Position DESC
                 .collect(Collectors.toList());
+    }
+
+    private static Object refineReward(final int reward) {
+        return new DecimalFormat(REWARD_FORMAT).format(reward);
     }
 
     private static void addEarningRate(
