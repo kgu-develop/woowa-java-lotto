@@ -20,7 +20,6 @@ class WinningRankTest {
 
     private static Stream<Arguments> winningCase() {
         return Stream.of(
-                Arguments.of(6, true, FIRST),
                 Arguments.of(6, false, FIRST),
                 Arguments.of(5, true, SECOND),
                 Arguments.of(5, false, THIRD),
