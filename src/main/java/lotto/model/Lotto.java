@@ -41,8 +41,8 @@ public class Lotto {
         }
     }
 
-    private boolean hasDuplicateNumber(final List<Integer> baseballs) {
-        return baseballs.stream()
+    private boolean hasDuplicateNumber(final List<Integer> number) {
+        return number.stream()
                 .distinct()
                 .count() != LOTTO_SIZE;
     }
