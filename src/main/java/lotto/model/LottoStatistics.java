@@ -22,7 +22,7 @@ public class LottoStatistics {
         calculateLotteryWinningResult();
     }
 
-    public static LottoStatistics of(
+    public static LottoStatistics checkLotteryResult(
             final LottoWinningMachine lottoWinningMachine,
             final UserLotto userLotto
     ) {

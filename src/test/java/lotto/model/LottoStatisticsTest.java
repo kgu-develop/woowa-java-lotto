@@ -21,8 +21,8 @@ class LottoStatisticsTest {
         final UserLotto userLottoCaseB = createUserLottosCaseB();
 
         // when
-        final LottoStatistics caseA = LottoStatistics.of(lottoWinningMachine, userLottoCaseA);
-        final LottoStatistics caseB = LottoStatistics.of(lottoWinningMachine, userLottoCaseB);
+        final LottoStatistics caseA = LottoStatistics.checkLotteryResult(lottoWinningMachine, userLottoCaseA);
+        final LottoStatistics caseB = LottoStatistics.checkLotteryResult(lottoWinningMachine, userLottoCaseB);
 
         // then
         final Map<WinningRank, Integer> winningResultA = caseA.getWinningResult();
@@ -55,8 +55,8 @@ class LottoStatisticsTest {
         final UserLotto userLottoCaseB = createUserLottosCaseB();
 
         // when
-        final LottoStatistics caseA = LottoStatistics.of(lottoWinningMachine, userLottoCaseA);
-        final LottoStatistics caseB = LottoStatistics.of(lottoWinningMachine, userLottoCaseB);
+        final LottoStatistics caseA = LottoStatistics.checkLotteryResult(lottoWinningMachine, userLottoCaseA);
+        final LottoStatistics caseB = LottoStatistics.checkLotteryResult(lottoWinningMachine, userLottoCaseB);
 
         // then
         assertAll(

@@ -35,7 +35,7 @@ public class GameController {
     }
 
     private void displayLottoResult() {
-        final LottoStatistics lottoStatistics = LottoStatistics.of(lottoWinningMachine, userLotto);
+        final LottoStatistics lottoStatistics = LottoStatistics.checkLotteryResult(lottoWinningMachine, userLotto);
         OutputView.printWinningStatistics(lottoStatistics);
     }
 }
